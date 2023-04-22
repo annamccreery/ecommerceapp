@@ -1,12 +1,19 @@
 import React from 'react';
 import './App.css';
 
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import { withAuthenticator, Authenticator } from '@aws-amplify/ui-react';
 
 const Profile = () => {
   return (
     <div style={containerStyle}>
-      <AmplifySignOut />
+      <Authenticator>
+      {({ signOut, user }) => (
+        <main>
+          <h1>Hello {user.username}</h1>
+          <button onClick={signOut}>Sign out</button>
+        </main>
+      )}
+    </Authenticator>
     </div>
   );
 }
