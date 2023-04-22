@@ -22,11 +22,12 @@ const Admin = () => {
 
     const addItem = async() => {
         try {
-            const data = { ...itemInfo, price: parseInt(itemInfo.price) }
-                updateItemInfo(initialState)
-
-                await API.post('ecommerceapi', '/products', data)
-        }
+            const data = {
+                body: { ...itemInfo, price: parseInt(itemInfo.price) }
+              }
+              updateItemInfo(initialState)
+              await API.post('ecommerceapi', '/products', data)
+            } 
         catch (err) {
             console.err('error adding item...', err)
         }
